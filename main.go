@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 // 胜利的组合
@@ -47,8 +48,13 @@ func main() {
 		ai := guessList[index]
 
 		fmt.Println("u: ", u)
+
+		time.Sleep(time.Second * 1)
+
 		fmt.Println("ai: ", ai)
 		tuple := []string{ai, u}
+
+		time.Sleep(time.Second * 1)
 
 		if ai == u {
 			fmt.Println("draw")
