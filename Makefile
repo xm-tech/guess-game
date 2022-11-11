@@ -13,7 +13,7 @@ EXEC_FILE := main
 main:
 	go build -ldflags $(LD_FLAGS) -gcflags "-N" -v -o $(EXEC_FILE) cmd/main.go
 
-run: main
+run: $(EXEC_FILE)
 	./$(EXEC_FILE)
 
 .PHNOY : clean
