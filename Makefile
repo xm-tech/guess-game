@@ -8,14 +8,14 @@ BUILD_DATE := $(shell date +%Y-%m-%d\ %H:%M:%S)
 # link flags
 LD_FLAGS='-X "$(APP)/version.VERSION=$(VERSION)" -X "$(APP)/version.AUTHOR=$(AUTHOR)" -X "$(APP)/version.BUILD_INFO=$(BUILD_INFO)" -X "$(APP)/version.BUILD_DATE=$(BUILD_DATE)"'
 
-EXEC_FILE := main
+OBJECT_FILE := main
 
-main:
-	go build -ldflags $(LD_FLAGS) -gcflags "-N" -v -o $(EXEC_FILE) cmd/main.go
+$(OBJECT_FILE):
+	go build -ldflags $(LD_FLAGS) -gcflags "-N" -v -o $(OBJECT_FILE) cmd/main.go
 
-run: $(EXEC_FILE)
-	./$(EXEC_FILE)
+run: $(OBJECT_FILE)
+	./$(OBJECT_FILE)
 
 .PHNOY : clean
 clean: 
-	-rm -f $(EXEC_FILE)
+	-rm -f $(OBJECT_FILE)
