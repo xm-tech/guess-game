@@ -54,6 +54,9 @@ func from_prompt() (string, error) {
 func from_input() string {
 	var input string
 	fmt.Scanf("%s\n", &input)
+	if !toGuess.contains(input) {
+		return ""
+	}
 	return input
 }
 
@@ -71,7 +74,12 @@ func init() {
 func main() {
 
 	for {
-		u, _ := from_prompt()
+		// u, _ := from_prompt()
+		u := from_input()
+		if u == "" {
+			fmt.Println("wrong input:", u)
+			continue
+		}
 
 		fmt.Println("u: ", u)
 
@@ -91,5 +99,7 @@ func main() {
 		} else {
 			fmt.Println("u win")
 		}
+
+		break
 	}
 }
