@@ -8,7 +8,7 @@ BUILD_DATE := $(shell date +%Y-%m-%d\ %H:%M:%S)
 # link flags
 LD_FLAGS='-X "$(APP)/version.VERSION=$(VERSION)" -X "$(APP)/version.AUTHOR=$(AUTHOR)" -X "$(APP)/version.BUILD_INFO=$(BUILD_INFO)" -X "$(APP)/version.BUILD_DATE=$(BUILD_DATE)"'
 
-OBJECT_FILE := main
+OBJECT_FILE := $(APP)
 
 $(OBJECT_FILE):
 	go build -ldflags $(LD_FLAGS) -gcflags "-N" -v -o $(OBJECT_FILE) cmd/main.go
