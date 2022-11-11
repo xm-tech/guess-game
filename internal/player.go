@@ -42,5 +42,5 @@ func (self *Player) Win() {
 }
 
 func (self *Player) Celebrate() {
-	fmt.Println("Congratulations! ", self.Name, ", u Win!")
+	fmt.Println("Congratulations! ", self.Name, ", u Win! loops:", G.loops)
 }

@@ -13,7 +13,7 @@ type Game struct {
 	Wins [][]string
 	// 两名玩家
 	players [2]*Player
-	// 共完游戏轮数
+	// 当前已完游戏轮数
 	loops int
 	// 获胜需要轮数
 	WinCnt int
@@ -29,7 +29,7 @@ func NewGame() *Game {
 		Alternatives: []string{"剪刀", "石头", "布"},
 		Wins:         [][]string{{"剪刀", "布"}, {"布", "石头"}, {"石头", "剪刀"}},
 		players:      [2]*Player{playerA, playerB},
-		loops:        3,
+		loops:        0,
 		WinCnt:       2,
 	}
 }
@@ -49,6 +49,8 @@ func (self *Game) Run() {
 				fmt.Println("无效，请再次出拳")
 				continue
 			}
+
+			self.loops++
 			if self.loopWin([]string{guess0, guess1}) {
 				self.players[0].Win()
 				fmt.Println("本轮", self.players[0].Name, "胜")
